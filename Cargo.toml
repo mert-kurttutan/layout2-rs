@@ -17,7 +17,7 @@ test = false
 bench = false
 
 [workspace]
-members = ["layout"]
+members = ["layout", "wasm"]
 
 [dependencies]
 layout-rs = { path = "layout", features = ["log"], version = "0.1.2" }

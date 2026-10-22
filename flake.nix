@@ -30,16 +30,12 @@
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
-              cargo
-              clippy
               graphviz
-              rustc
-              rustfmt
             ];
 
             shellHook = ''
               echo "layout-rs dev shell"
-              echo "Rust: $(rustc --version)"
+              echo "Using host Rust: $(rustc --version)"
               echo "Graphviz: $(dot -V 2>&1)"
             '';
           };

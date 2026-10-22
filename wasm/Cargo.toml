@@ -1,0 +1,12 @@
+[package]
+name = "layout-wasm"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+layout-rs = { path = "../layout" }
+wasm-bindgen = "0.2"

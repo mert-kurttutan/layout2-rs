@@ -65,6 +65,29 @@ Build the crate and render some dot files with the command
 cargo run --bin layout ./inputs/bk.dot -o output.svg
 ```
 
+## WebAssembly Usage
+
+The `wasm` workspace member exposes the same DOT parsing, layout, and SVG
+rendering pipeline as a browser-callable function. It takes DOT source as a
+string and returns SVG as a string; it does not use the CLI's filesystem or
+command-line handling.
+
+Install the WebAssembly target and `wasm-pack`, then build the generated
+JavaScript bindings for Vite from the repository root:
+
+```bash
+rustup target add wasm32-unknown-unknown
+cargo install wasm-pack
+cd ../layout-web
+npm run wasm:build
+```
+
+The generated package exports `render_dot(source, disable_optimizations,
+disable_layout)`. Import and initialize that package from the Svelte app, then
+pass the editor contents to `render_dot` and display the returned SVG. Rebuild
+the package whenever the Rust wrapper or library changes. The generated output
+is a build artifact and should not be committed.
+
 ## Gallery
 
 This section presents a few graphs that were rendered from dot files:
